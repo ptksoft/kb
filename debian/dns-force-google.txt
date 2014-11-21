@@ -1,0 +1,4 @@
+
+## Add this Line to /etc/dhcp/dhclient.conf
+prepend domain-name-servers 8.8.8.8, 8.8.4.4;
+

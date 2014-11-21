@@ -1,0 +1,4 @@
+# Disable Screen Virtual BELL
+# Create file .screenrc and add this line
+
+vbell off
