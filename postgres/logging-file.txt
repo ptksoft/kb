@@ -1,0 +1,9 @@
+log_destination = 'stderr'
+logging_collector = on
+log_directory = 'pg_log'
+log_min_duration_statement = 2000
+log_duration = off
+log_line_prefix = '%t %p %r %d %u '
+log_statement = 'none'
+
+

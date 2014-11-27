@@ -1,0 +1,7 @@
+select 
+pid, usename, datname,client_addr,waiting,
+now()-query_start as run_time,query
+from pg_stat_activity 
+where query != '<IDLE>' 
+order by run_time DESC;
+

@@ -1,0 +1,22 @@
+/etc/postgresql/8.4/main/postgresql.conf
+
+## Memory ##
+
+shared_buffers = ????	
+Should 1/4 of all memory
+Sometime need to adjust kernel.shmmax value to 1/2 of all memory
+check value from "cat /proc/sys/kernel/shmmax"
+change value
+step1:	"sysctl -w kernel.shmmax=<value>"	# write new value to /etc/sysctl.conf
+step2:	"sysctl -p /etc/sysctl.conf"	# read/reload value from config
+
+
+## PG_ENV ##
+export LD_LIBRARY_PATH=/opt/pg91/lib
+
+
+## Start PostgreSQL 9.1 cluster /opt/pg91/data3 (SCS2)
+su - postgres -c "LD_LIBRARY_PATH=/opt/pg91/lib:$LD_LIBRARY_PATH /opt/pg91/bin/pg_ctl -w start -D \"/opt/pg91/data3\""
+
+
+
