@@ -1,6 +1,3 @@
-## create .vimrc
-## Add generic configuration
-
 set ai
 set number
 set tabstop=4
