@@ -2,5 +2,7 @@ set ai
 set number
 set tabstop=4
 set shiftwidth=4
+set fdm=marker
 syntax on
-
+color darkblue
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
