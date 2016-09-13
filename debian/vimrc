@@ -6,3 +6,6 @@ set fdm=marker
 syntax on
 color darkblue
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+inoremap <c-@> <c-x><c-o>
+map <F5> :w<CR>:!php -l %<CR>
+
