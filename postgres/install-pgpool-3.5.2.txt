@@ -1,0 +1,75 @@
+apt-get update
+apt-get install libpq-dev make
+
+# Download the tarball:
+wget http://www.pgpool.net/download.php?f=pgpool-II-3.5.2.tar.gz -O pgpool-II-3.5.2.tar.gz
+
+# Extract the tarball:
+tar -xzf pgpool-II-3.5.2.tar.gz
+
+# Delete the tarball once extracted:
+rm pgpool-II-3.5.2.tar.gz
+
+# cd to source directory:
+cd pgpool-II-3.5.2
+
+./configure --prefix=/usr/share/pgpool2/3.5.2
+make
+make install
+
+# pickup and create configuration directory
+mkdir /etc/pgpool2
+mkdir /etc/pgpool2/3.5.2
+
+# move content of config
+mv /usr/share/pgpool2/3.5.2/etc/* /etc/pgpool2/3.5.2/
+
+# copy binary file
+cp /usr/share/pgpool2/3.5.2/bin/pcp_attach_node /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_detach_node /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_node_count /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_node_info /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_pool_status /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_proc_count /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_proc_info /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_promote_node /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_recovery_node /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_stop_pgpool /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pcp_watchdog_info /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pg_md5 /usr/sbin/
+cp /usr/share/pgpool2/3.5.2/bin/pgpool /usr/sbin/
+
+# Create SQL scripts directory:
+mkdir /etc/postgresql/9.5/main/sql
+
+# Navigate to source directory:
+cd ~/pgpool-II-3.5.2
+
+# Navigate to src/sql subdirectory:
+cd src/sql
+
+# While there let's copy the first script file:
+cp insert_lock.sql /etc/postgresql/9.5/main/sql/
+
+# Navigate to pgpool_adm (the first extension) subdirectory:
+cd pgpool_adm
+cp pgpool_adm.control /usr/share/postgresql/9.5/extension/
+cp pgpool_adm--1.0.sql /usr/share/postgresql/9.5/extension/
+cp pgpool_adm.sql.in /etc/postgresql/9.5/main/sql/pgpool_adm.sql
+
+# Navigate up in order to select another extension:
+cd ..
+cd pgpool-recovery
+cp pgpool_recovery.control /usr/share/postgresql/9.5/extension/
+cp pgpool_recovery--1.1.sql /usr/share/postgresql/9.5/extension/
+cp pgpool-recovery.sql.in /etc/postgresql/9.5/main/sql/pgpool-recovery.sql
+cp uninstall_pgpool-recovery.sql /etc/postgresql/9.5/main/sql/
+
+# Navigate up in order to select another extension:
+cd ..
+cd pgpool-regclass
+cp pgpool_regclass.control /usr/share/postgresql/9.5/extension/
+cp pgpool_regclass--1.0.sql /usr/share/postgresql/9.5/extension/
+cp pgpool-regclass.sql.in /etc/postgresql/9.5/main/sql/pgpool-regclass.sql
+cp uninstall_pgpool-regclass.sql /etc/postgresql/9.5/main/sql/
+
