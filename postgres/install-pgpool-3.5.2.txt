@@ -39,33 +39,21 @@ cp /usr/share/pgpool2/3.5.2/bin/pcp_watchdog_info /usr/sbin/
 cp /usr/share/pgpool2/3.5.2/bin/pg_md5 /usr/sbin/
 cp /usr/share/pgpool2/3.5.2/bin/pgpool /usr/sbin/
 
-# Create SQL scripts directory:
+# Create/Copy SQL scripts directory:
 mkdir /etc/postgresql/9.5/main/sql
-
-# Navigate to source directory:
 cd ~/pgpool-II-3.5.2
-
-# Navigate to src/sql subdirectory:
 cd src/sql
-
-# While there let's copy the first script file:
 cp insert_lock.sql /etc/postgresql/9.5/main/sql/
-
-# Navigate to pgpool_adm (the first extension) subdirectory:
 cd pgpool_adm
 cp pgpool_adm.control /usr/share/postgresql/9.5/extension/
 cp pgpool_adm--1.0.sql /usr/share/postgresql/9.5/extension/
 cp pgpool_adm.sql.in /etc/postgresql/9.5/main/sql/pgpool_adm.sql
-
-# Navigate up in order to select another extension:
 cd ..
 cd pgpool-recovery
 cp pgpool_recovery.control /usr/share/postgresql/9.5/extension/
 cp pgpool_recovery--1.1.sql /usr/share/postgresql/9.5/extension/
 cp pgpool-recovery.sql.in /etc/postgresql/9.5/main/sql/pgpool-recovery.sql
 cp uninstall_pgpool-recovery.sql /etc/postgresql/9.5/main/sql/
-
-# Navigate up in order to select another extension:
 cd ..
 cd pgpool-regclass
 cp pgpool_regclass.control /usr/share/postgresql/9.5/extension/
