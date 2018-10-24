@@ -3,7 +3,7 @@
 export EDITOR=vi
 export LESS=' -R'
 
-alias ll='ls -la'
+alias ll='ls -laF'
 alias la='ls -A'
-alias l='ls -l'
+alias l='ls -lF'
 
