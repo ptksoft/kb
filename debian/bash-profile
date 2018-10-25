@@ -3,7 +3,21 @@
 export EDITOR=vi
 export LESS=' -R'
 
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+
 alias ll='ls -laF'
-alias la='ls -A'
+alias la='ls -laF'
 alias l='ls -lF'
+
+alias ga='git add . '
+alias gs='git status '
+alias gp='git pull '
+alias gu='git push '
+alias gm='git commit -m '
 
