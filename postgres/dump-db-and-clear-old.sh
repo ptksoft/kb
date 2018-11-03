@@ -18,7 +18,7 @@ export PGPASSWORD="${DB_PASS}"
 ${DUMP_CMD} --format=c --file=${DUMP_PATH}/${DB_NAME}.$NOW.c.dump --clean --no-owner --insert --user=${DB_USER} ${DB_NAME}
 
 echo Clear old 2 day backup ... ${DB_NAME}.${YET2}.c.dump
-rm $DUMP_PATH}/${DB_NAME}.${YET2}.c.dump
+rm ${DUMP_PATH}/${DB_NAME}.${YET2}.c.dump
 D2=$(date +"%Y-%m-%d %H:%M:%S")
 echo Finish...
 
