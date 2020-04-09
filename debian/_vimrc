@@ -1,11 +1,20 @@
 set ai
 set number
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
+set noexpandtab
 set fdm=marker
-set mouse-=a
 syntax on
 color darkblue
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 inoremap <c-@> <c-x><c-o>
 map <F5> :w<CR>:!php -l %<CR>
+
+augroup project
+	autocmd!
+	autocmd BufRead,BufNewFile *.h, *.c set filetype=c.doxygen
+augroup END
+let &path.="src/include,/usr/include/AL,"
+set makeprg=make\ -C\ ../build\ -j9
+nnoremap <F4> :make!<cr>
