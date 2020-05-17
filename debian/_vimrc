@@ -5,6 +5,7 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 set fdm=marker
+set mouse-=a
 syntax on
 color darkblue
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
