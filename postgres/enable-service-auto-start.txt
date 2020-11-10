@@ -1,0 +1,11 @@
+# Add these header to script /etc/init.d/postgresql-10
+
+
+### BEGIN INIT INFO
+# Provides:          my-service-name
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: your description here
+### END INIT INFO
