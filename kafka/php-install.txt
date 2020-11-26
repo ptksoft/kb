@@ -1,0 +1,22 @@
+// install librdkafka
+
+#apt-get install librdkafka1 librdkafka-dev
+#apt-get install php-pear php-pecl-http php-dev
+#pecl install rdkafka
+
+// create file /etc/php/7.3/mods-avaliable/rdkafka.ini
+// add the following lines
+
+; configuration for php common module
+; priority=10
+extension=rdkafka.so
+
+
+// enable modules by php command
+
+#phpenmod rdkafka
+
+
+// check kafka install
+
+#php --info | grep rdkafka
