@@ -1,6 +1,6 @@
 #Kafka server properties
 zookeeper.connect=192.168.1.141:2128,192.168.1.142:2128,192.168.1.143:2128
-
+advertised.listeners=PLAINTEXT://192.168.1.143:9092		<-- IP of node
 
 
 #ZooKeeper properties
