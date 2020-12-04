@@ -1,0 +1,15 @@
+#Kafka server properties
+zookeeper.connect=192.168.1.141:2128,192.168.1.142:2128,192.168.1.143:2128
+
+
+
+#ZooKeeper properties
+initLimit=10
+syncLimit=5
+server.1=192.168.1.141:2888:3888
+server.2=192.168.1.142:2888:3888
+server.3=192.168.1.143:2888:3888
+
+## ZooKeeper set file 
+/path-to-zookeeper-data/myid = 1, 2 or 3 depend on it id
+
