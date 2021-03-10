@@ -1,0 +1,1 @@
+\COPY (SELECT * FROM data.tables WHERE trn_datetime > '2020-11-27') to '/tmp/tables.csv' (FORMAT CSV, HEADER TRUE, DELIMITER ',', ENCODING 'UTF8')
