@@ -1,0 +1,15 @@
+## List Time Zone
+timedatectl list-timezones
+
+## Set Time Zone
+timedatectl set-timezone "Asia/Bangkok"
+
+## Revise NTP server
+vi /etc/systemd/timesyncd.conf
+NTP=x.x.x.x
+
+## Restart the systemd-timesyncd service
+systemctl restart systemd-timesyncd.service
+
+## Enable Network Time Sync
+timedatectl set-ntp true
