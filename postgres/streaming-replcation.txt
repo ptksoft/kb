@@ -69,6 +69,9 @@ max_wal_senders = 5
 wal_keep_segments = 32
 hot_standby = on
 
+### prevent slow query on slave was cancel
+max_standby_archive_delay = 900s
+max_standby_streaming_delay = 900s
 
 -------------------------------------------------------------------------------------
 4. create recovery.conf
