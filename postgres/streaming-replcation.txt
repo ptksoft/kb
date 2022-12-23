@@ -75,8 +75,17 @@ hot_standby = on
 -------------------------------------------------------------------------------------
 standby_mode = 'on'
 primary_conninfo = 'host=172.16.100.10 port=5432 user=replicator password=repadmin'
-trigger_file = '/var/tmp/standby.trig'
-restore_command = 'cp /opt/pg96/data/archive/%f %p'
+
+# Specifies a trigger file whose presence should cause streaming replication to
+# end (i.e., failover)
+#trigger_file = '/var/tmp/standby.trig'
+
+# Specifies a command to load archive segments from the WAL archive. If
+# wal_keep_segments is a high enough number to retain the WAL segments
+# required for the standby server, this may not be necessary. But
+# a large workload can cause segments to be recycled before the standby
+# is fully synchronized, requiring you to start again from a new base backup
+#restore_command = 'cp /opt/pg96/data/archive/%f %p'
 
 
 -------------------------------------------------------------------------------------
