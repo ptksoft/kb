@@ -1,0 +1,41 @@
+###  Use pg_controldata to get REDO WALL file
+
+----------------------------------------------------------------------
+postgres@api:~$ bin/pg_controldata -D data
+
+pg_control version number:            960
+Catalog version number:               201608131
+Database system identifier:           6616129936661600266
+Database cluster state:               in production
+pg_control last modified:             Wed 15 Feb 2023 12:56:20 PM +07
+Latest checkpoint location:           C7/608B78C8
+Prior checkpoint location:            C7/608645B8
+Latest checkpoint's REDO location:    C7/608B28D8
+Latest checkpoint's REDO WAL file:    00000001000000C700000060    <---- Check-Point
+Latest checkpoint's TimeLineID:       1
+Latest checkpoint's PrevTimeLineID:   1
+Latest checkpoint's full_page_writes: on
+Latest checkpoint's NextXID:          0:326371892
+Latest checkpoint's NextOID:          12709539
+Latest checkpoint's NextMultiXactId:  1
+Latest checkpoint's NextMultiOffset:  0
+Latest checkpoint's oldestXID:        126468086
+Latest checkpoint's oldestXID's DB:   16394
+Latest checkpoint's oldestActiveXID:  0
+Latest checkpoint's oldestMultiXid:   1
+Latest checkpoint's oldestMulti's DB: 16394
+Latest checkpoint's oldestCommitTsXid:0
+Latest checkpoint's newestCommitTsXid:0
+----------------------------------------------------------------------
+
+### Use check point 00000001000000C700000060 as parameter of pg_archivecleanup
+
+# Dry RUN (Just Check)
+bin/pg_archivecleanup -n data/archive 00000001000000C700000060
+
+# Debug RUN (Display what to do)
+bin/pg_archivecleanup -d data/archive 00000001000000C700000060
+
+# Apply Real Delete (Silently delete without output)
+bin/pg_archivecleanup data/archive 00000001000000C700000060
+
