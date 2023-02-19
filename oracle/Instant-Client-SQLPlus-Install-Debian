@@ -1,0 +1,11 @@
+apt-get install -y libaio1 alien
+# Change version based on https://www.oracle.com/de/database/technologies/instant-client/linux-x86-64-downloads.html
+# Example alternative: http://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/getPackage/oracle-instantclient19.5-basiclite-19.5.0.0.0-1.x86_64.rpm
+wget http://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/getPackage/oracle-instantclient19.6-basic-19.6.0.0.0-1.x86_64.rpm
+sudo alien -i --scripts oracle-instantclient*.rpm
+rm -f oracle-instantclient*.rpm  
+
+# Optionally install SQLPlus
+wget http://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/getPackage/oracle-instantclient19.6-sqlplus-19.6.0.0.0-1.x86_64.rpm
+sudo alien -i --scripts oracle-instantclient*.rpm
+rm -f oracle-instantclient*.rpm 
