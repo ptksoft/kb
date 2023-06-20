@@ -72,3 +72,16 @@ WantedBy=multi-user.target
 ## Starting KAFA Service
 ------------------------------------------------------------------------------
 sudo service kafka start
+
+
+------------------------------------------------------------------------------
+## Enable Auto Start at boot for zookeeper.service/kafka.service
+------------------------------------------------------------------------------
+systemctl is-enabled zookeeper.service
+systemctl enable zookeeper.service
+
+systemctl is-enabled kafka.service
+systemctl enable kafka.service
+
+reboot
+
