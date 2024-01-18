@@ -20,3 +20,8 @@ systemctl status postgresql.service
 
 ### Reference Site
 ### https://www.tecmint.com/install-postgresql-on-debian/
+
+
+### Create Database with Thai Collate and CType
+
+create database cch with owner=cch ENCODING='UTF8' LOCALE='C' LC_COLLATE "th_TH.utf8" LC_CTYPE "th_TH.utf8" TEMPLATE template0;
