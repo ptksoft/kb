@@ -1,0 +1,22 @@
+apt-get update
+apt-get upgrade
+
+### Add PostgreSQL Repository on Debian
+echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+apt-get update
+
+### Install PostgreSQL 16 on Debian
+apt-get install postgresql-16
+
+### Manage PostgreSQL Service
+systemctl start postgresql.service
+systemctl enable postgresql.service 
+systemctl status postgresql.service 
+
+### Set Postgres User Password
+\password postgres
+
+
+### Reference Site
+### https://www.tecmint.com/install-postgresql-on-debian/
