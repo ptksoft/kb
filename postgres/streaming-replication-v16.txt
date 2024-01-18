@@ -1,0 +1,61 @@
+### MASTER ###
+
+#-------------------------------------------
+vi /etc/postgresql/16/main/postgresql.conf
+
+ # line 60 : uncomment and change
+
+listen_addresses = '*
+'
+# line 211 : uncomment
+
+wal_level = replica
+# line 216 : uncomment
+
+synchronous_commit = on
+# line 314 : uncomment (max number of concurrent connections from streaming clients)
+
+max_wal_senders = 10
+# line 328 : uncomment and change
+
+synchronous_standby_names = '*'
+
+#-------------------------------------------
+
+
+#-------------------------------------------
+vi /etc/postgresql/16/main/pg_hba.conf
+
+#host    replication     all             127.0.0.1/32            ident
+#host    replication     all             ::1/128                 ident
+host    replication     replicator        10.0.0.30/32            scram-sha-256
+
+
+
+
+### SLAVE ###
+
+# get backup from Primary Host
+pg_basebackup -R -h 10.0.0.10 -U replicator -D /var/lib/postgresql/16/data -P
+
+#-------------------------------------------
+vi /etc/postgresql/16/main/postgresql.conf
+
+listen_addresses = '*' 
+hot_standby = on
+
+# The start Service
+
+
+
+### MASTER ####
+# query check
+
+select usename, application_name, client_addr, state, sync_priority, sync_state from pg_stat_replication;
+
+# Got Result Like this
+usename  | application_name | client_addr |   state   | sync_priority | sync_state
+----------+------------------+-------------+-----------+---------------+------------
+ rep_user | walreceiver      | 10.0.0.51   | streaming |             1 | sync
+(1 row)
+
