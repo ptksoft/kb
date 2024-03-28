@@ -1,0 +1,9 @@
+Archive Command Fail Cannot stat "data/archive/0000000400000BCB000000FF"
+
+Resolve by
+First Stop Database Service
+then Reset wal file
+
+#pg_resetwal -n data    <--- Dry Run
+#pg_resetwal data       <--- Normal Run / Apply
+#pg_resetwal -f data    <--- Force Reset
