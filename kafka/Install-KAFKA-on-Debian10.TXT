@@ -25,6 +25,9 @@ vi config/server.properties
 ### Add line to enable delete topic
 delete.topic.enable = true
 
+### Prevent auto create topic
+auto.create.topics.enable = false
+
 ### Also check Listen address and Server Advertisment
 
 ------------------------------------------------------------------------------
