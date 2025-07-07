@@ -54,9 +54,10 @@ host	replication		replicator	172.16.100.11/32	md5
 
 -------------------------------------------------------------------------------------
 2. cleanup DataDir
+## Add -R for write-cecovery-conf
 -------------------------------------------------------------------------------------
 rm -rf /opt/pg96/data/*
-bin/pg_basebackup -h 172.16.100.10 -D /opt/pg96/data -U replicator -v -P
+bin/pg_basebackup -R -h 172.16.100.10 -D /opt/pg96/data -U replicator -v -P
 
 
 -------------------------------------------------------------------------------------
