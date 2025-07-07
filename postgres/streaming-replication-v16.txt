@@ -36,7 +36,7 @@ host    replication     replicator        10.0.0.30/32            scram-sha-256
 ### SLAVE ###
 
 # get backup from Primary Host
-pg_basebackup -R -h 10.0.0.10 -U replicator -D /var/lib/postgresql/16/data -P
+pg_basebackup -R -h 10.0.0.10 -U replicator -D /var/lib/postgresql/16/data -v -P
 
 #-------------------------------------------
 vi /etc/postgresql/16/main/postgresql.conf
